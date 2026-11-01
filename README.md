@@ -12,8 +12,9 @@ site's repository). The site loads them through the free jsDelivr CDN:
   pitch to the notes in between), and one mp3 per drum kit with one hit per slot. `v1/manifest.json` lists the notes or
   hits of every file, their loudness and peaks. Only single notes and hits: every melody, chord and rhythm is composed
   by AFJ's code.
-- **Versions**: never change or delete files in `v1/`; put new or changed sounds in a new folder (`v2/`), commit, and
-  point `RD_SND_BASE` in `radio.js` at the new commit and folder.
+- **Versions**: the site pins a commit, so a commit never changes. New instruments or kits may be added to `v1/`
+  (render only them: `python3 tools/render.py FluidR3Mono_GM.sf3 v1 <name,name>`); never change or delete an existing
+  file there (re-recorded sounds go in a new folder, `v2/`). Then point `RD_SND_BASE` in `radio.js` at the new commit.
 - **Rebuild**: `python3 tools/render.py FluidR3Mono_GM.sf3 v1 && python3 tools/stats.py v1` (needs fluidsynth and ffmpeg).
 
 | File | Contents |
@@ -67,3 +68,4 @@ site's repository). The site loads them through the free jsDelivr CDN:
 | `kit_808` | 30 drum hits |
 | `kit_jazz` | 30 drum hits |
 | `kit_brush` | 30 drum hits |
+| `kit_electronic` | 30 drum hits |

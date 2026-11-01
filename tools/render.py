@@ -11,6 +11,7 @@ Usage: python3 tools/render.py <path to FluidR3Mono_GM.sf3> <output folder>   (n
 import json, os, struct, subprocess, sys, tempfile, wave, array, math
 
 SF, OUT = sys.argv[1], sys.argv[2]
+ONLY = set(sys.argv[3].split(',')) if len(sys.argv) > 3 else None   # render only these names; the others keep their files and manifest entries
 SR = 44100
 
 # name: (bank, program, lowest, highest, hold seconds, slot seconds). Chosen for the instruments each genre is played with.
@@ -41,7 +42,7 @@ HITS = [('kick', 36, 112), ('kicksoft', 36, 70), ('snare', 38, 112), ('ghost', 3
         ('conga', 63, 100), ('congalo', 64, 100), ('congamute', 62, 90), ('bongo', 60, 100), ('bongolo', 61, 100), ('timbale', 65, 100), ('agogo', 67, 90),
         ('cabasa', 69, 90), ('shaker', 70, 95), ('guiro', 73, 90), ('clave', 75, 100), ('wood', 76, 100), ('tamb', 54, 90), ('cowbell', 56, 90),
         ('brushtap', 38, 50), ('swirl', 40, 70)]
-KITS = {'kit_standard': 0, 'kit_room': 8, 'kit_power': 16, 'kit_808': 25, 'kit_jazz': 32, 'kit_brush': 40}
+KITS = {'kit_standard': 0, 'kit_room': 8, 'kit_power': 16, 'kit_808': 25, 'kit_jazz': 32, 'kit_brush': 40, 'kit_electronic': 24}
 DRUM_SLOT, DRUM_HOLD = 1.2, 0.25
 
 def vlq(n):
@@ -82,8 +83,11 @@ def encode(wav, mp3, peak):
 
 os.makedirs(OUT, exist_ok=True)
 man = {'v': 1, 'source': 'FluidR3Mono_GM (MIT licence)', 'files': {}}
+if ONLY and os.path.exists(os.path.join(OUT, 'manifest.json')):
+    man = json.load(open(os.path.join(OUT, 'manifest.json')))
 tmp = tempfile.mkdtemp()
 for name, (bank, prog, lo, hi, hold, slot) in INST.items():
+    if ONLY and name not in ONLY: continue
     notes = list(range(lo, hi + 1, 3))
     ev = [(0, bytes([0xB0, 0, bank])), (0, bytes([0xB0, 32, 0])), (0.001, bytes([0xC0, prog]))]
     for i, n in enumerate(notes):
@@ -97,6 +101,7 @@ for name, (bank, prog, lo, hi, hold, slot) in INST.items():
     man['files'][name] = {'slot': slot, 'notes': notes, 'loud': round(loud, 4)}
     print(name, len(notes), 'notes', os.path.getsize(os.path.join(OUT, name + '.mp3')) // 1024, 'KB')
 for name, kit in KITS.items():
+    if ONLY and name not in ONLY: continue
     ev = [(0, bytes([0xC9, kit]))]
     for i, (h, n, v) in enumerate(HITS):
         ev += [(0.05 + i * DRUM_SLOT, bytes([0x99, n, v])), (0.05 + i * DRUM_SLOT + DRUM_HOLD, bytes([0x89, n, 0]))]
