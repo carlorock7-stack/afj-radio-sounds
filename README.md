@@ -3,15 +3,17 @@
 Recorded single notes of real instruments for **AFJ Radio** on [aurorafj.org](https://aurorafj.org) (`radio.js` in the
 site's repository). The site loads them through the free jsDelivr CDN:
 
-`https://cdn.jsdelivr.net/gh/carlorock7-stack/afj-radio-sounds@v1/v1/<name>.mp3`
+`https://cdn.jsdelivr.net/gh/carlorock7-stack/afj-radio-sounds@<commit>/v1/<name>.mp3`
+
+(`<commit>` is the commit id written in `RD_SND_BASE` in `radio.js`: a fixed commit never changes, so cached copies stay right.)
 
 - **Source and licence**: rendered from the FluidR3Mono General MIDI soundfont, MIT licence. See `ATTRIBUTION.md` and `LICENSE`.
 - **What is inside**: one mp3 per instrument with one note every 3 semitones, `slot` seconds apart (the player shifts the
   pitch to the notes in between), and one mp3 per drum kit with one hit per slot. `v1/manifest.json` lists the notes or
   hits of every file, their loudness and peaks. Only single notes and hits: every melody, chord and rhythm is composed
   by AFJ's code.
-- **Versions**: the site points at the git tag `v1`. Never change files under a published tag; put new or changed
-  sounds in a new folder and tag (`v2/`, tag `v2`) and update `RD_SND_BASE` in `radio.js`.
+- **Versions**: never change or delete files in `v1/`; put new or changed sounds in a new folder (`v2/`), commit, and
+  point `RD_SND_BASE` in `radio.js` at the new commit and folder.
 - **Rebuild**: `python3 tools/render.py FluidR3Mono_GM.sf3 v1 && python3 tools/stats.py v1` (needs fluidsynth and ffmpeg).
 
 | File | Contents |
