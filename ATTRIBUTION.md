@@ -103,3 +103,21 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
+
+
+---
+
+# v2/: real instruments (added November 2026)
+
+`v2/` is made by `tools/build_v2.py` from these free libraries. Only single notes and single drum hits are taken
+(two or three dynamics layers, and two takes of each drum hit), trimmed, converted to mono and encoded as mp3.
+
+| Files | Source | Author | Licence |
+|---|---|---|---|
+| piano, fmep, clav, organ, vibes, cleangtr, nylon, steel, ukulele, fbass, upright, altosax, tenorsax, trumpet, mutetpt, trombone, flute, harmonica, accordion, violin, strings, cellos, kit2_vintage, kit2_garage, kit2_jazz, kit2_brush, kit2_rock, perc2 | [maistro-sounds](https://github.com/atscglobal-ie/maistro-sounds) v2, built from the sfzinstruments libraries of Karoryfer Lecolds (D. Smolken) and Versilian Studios (Big Rusty Drums, Unruly Drums, Swirly Drums, Virtuosity Drums, Black And Blue Basses, Sneakybass, Osiris Piano, Shinyguitar and others listed in its NOTICE.md) | Karoryfer Lecolds, Versilian Studios | CC0 1.0 (public domain dedication; credit given anyway) |
+| wurli_0, wurli_1 | [Greg Sullivan's E-Pianos](https://github.com/sfzinstruments/GregSullivan.E-Pianos): Wurlitzer EP200 v1.1 | Greg Sullivan (http://www.sullivang.net/), mapped by kinwie | **CC BY 3.0**: credit required, given on the AFJ Radio page |
+| kit2_808 | TR-808 one-shots by Fischer, via [kringel-samples](https://github.com/Gradigang-Solutions/kringel-samples) (from tidalcycles/sounds-tr808-fischer) | Fischer | CC0 1.0 |
+
+Wurlitzer EP200 samples: "Wurlitzer EP200 Electric Piano" by Greg Sullivan, licensed under the Creative Commons
+Attribution 3.0 Unported licence (https://creativecommons.org/licenses/by/3.0/). Changes: single notes trimmed,
+converted to mono, encoded as mp3, packed into one file per dynamics layer.

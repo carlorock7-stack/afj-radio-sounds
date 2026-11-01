@@ -69,3 +69,42 @@ site's repository). The site loads them through the free jsDelivr CDN:
 | `kit_jazz` | 30 drum hits |
 | `kit_brush` | 30 drum hits |
 | `kit_electronic` | 30 drum hits |
+
+## v2: real instruments
+
+Built by `tools/build_v2.py` from free libraries (CC0 and one CC BY 3.0 instrument; see `ATTRIBUTION.md`): two or three
+dynamics layers per instrument (`<name>_0.mp3` soft, `_1` hard…), and two takes of each drum hit at three dynamics.
+The site prefers v2 and uses v1 for the instruments v2 does not have.
+
+| File | Contents |
+|---|---|
+| `accordion` | 10 notes × 1 dynamics layers |
+| `altosax` | 10 notes × 2 dynamics layers |
+| `cellos` | 9 notes × 2 dynamics layers |
+| `clav` | 12 notes × 2 dynamics layers |
+| `cleangtr` | 15 notes × 2 dynamics layers |
+| `fbass` | 12 notes × 2 dynamics layers |
+| `flute` | 10 notes × 2 dynamics layers |
+| `fmep` | 16 notes × 2 dynamics layers |
+| `harmonica` | 7 notes × 1 dynamics layers |
+| `kit2_808` | 10 hits × 1 dynamics × 1 takes |
+| `kit2_brush` | 11 hits × 3 dynamics × 2 takes |
+| `kit2_garage` | 11 hits × 3 dynamics × 2 takes |
+| `kit2_jazz` | 11 hits × 3 dynamics × 2 takes |
+| `kit2_rock` | 11 hits × 3 dynamics × 2 takes |
+| `kit2_vintage` | 11 hits × 3 dynamics × 2 takes |
+| `mutetpt` | 6 notes × 2 dynamics layers |
+| `nylon` | 15 notes × 1 dynamics layers |
+| `organ` | 14 notes × 1 dynamics layers |
+| `perc2` | 18 hits × 3 dynamics × 2 takes |
+| `piano` | 18 notes × 2 dynamics layers |
+| `steel` | 15 notes × 1 dynamics layers |
+| `strings` | 10 notes × 2 dynamics layers |
+| `tenorsax` | 10 notes × 2 dynamics layers |
+| `trombone` | 7 notes × 2 dynamics layers |
+| `trumpet` | 9 notes × 2 dynamics layers |
+| `ukulele` | 7 notes × 1 dynamics layers |
+| `upright` | 11 notes × 1 dynamics layers |
+| `vibes` | 11 notes × 2 dynamics layers |
+| `violin` | 10 notes × 2 dynamics layers |
+| `wurli` | 12 notes × 2 dynamics layers |
